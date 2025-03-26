@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>For joshiah ❤️</title>
+<style>
+       body {
+           font-family: 'Arial', sans-serif;
+           background-color: #ffe6e6;
+           text-align: center;
+           padding: 20px;
+       }
+       .container {
+           background: white;
+           padding: 20px;
+           border-radius: 15px;
+           box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+           max-width: 500px;
+           margin: auto;
+       }
+       h1 {
+           color: #ff4d6d;
+       }
+       p {
+           font-size: 18px;
+           color: #333;
+       }
+       button {
+           background: #ff4d6d;
+           color: white;
+           padding: 10px 15px;
+           font-size: 16px;
+           border: none;
+           border-radius: 5px;
+           cursor: pointer;
+           transition: 0.3s;
+       }
+       button:hover {
+           background: #ff1a4c;
+       }
+       .game-container {
+           display: none;
+           margin-top: 20px;
+           position: relative;
+           height: 300px;
+       }
+       .heart {
+           font-size: 30px;
+           cursor: pointer;
+           position: absolute;
+       }
+       #messageContainer, #surpriseButton, #audioPlayer, #surpriseText {
+           display: none;
+           margin-top: 20px;
+       }
+</style>
+</head>
+<body>
+<div class="container">
+   <h1 style="font-size: 20px;">for joshiah ❤️</h1>
+   <button id="clickMeButton" onclick="startGame()">Click Me</button>
+
+   <div id="gameContainer" class="game-container">
+       <p>Catch all 3 hearts! Click on them to win!</p>
+       <div id="heart1" class="heart">❤️</div>
+       <div id="heart2" class="heart">❤️</div>
+       <div id="heart3" class="heart">❤️</div>
+   </div>
+   
+   <div id="messageContainer">
+       <p>Hey love,</p>
+       <p>
+           I'm so bored and thought about you.
+           Maybe, I also missed you a little extra right now.  
+           Don't worry! Making this also helped me practice! 
+           This is not so so cool but I hope you'll like it!  
+       </p>
+       <p>
+           Random but, always remember that I'm always proud of you, and I'm grateful for you always.
+           Whatever you do, wherever you are, and whoever you become, I will try my best—supporting you,
+           believing in you, and loving you just the same. And, whatever comes next and wherever we end up, 
+           you always have my heart.
+
+       </p>
+       <p>
+           god, I sound so whippped! Wala eh, you've become my favorite part of my every day and my breath of fresh air na eh. lol!    
+           
+         
+       </p>
+       <p>No people pleasing involved. 😙  </p>
+       <p>I love you always. </p>
+   </div>
+   
+   <button id="surpriseButton" onclick="revealAudio()">Click to Play Song</button>
+   <p id="surpriseText">My favorite song that I will always relate to you. The line that I always feel for you. Click the play button to hear it. ❤️</p>
+   <iframe id="audioPlayer" src="https://drive.google.com/file/d/1_XQdx795Rz7EySRhy3zxoO1-pHHsu_g5/preview" width="300" height="50" allow="autoplay"></iframe>
+</div>
+
+<script>
+       let heartsCaught = 0;
+
+       function startGame() {
+           document.getElementById("gameContainer").style.display = "block";
+           document.getElementById("clickMeButton").style.display = "none";
+           moveHeart("heart1");
+           moveHeart("heart2");
+           moveHeart("heart3");
+           setInterval(() => {
+               moveHeart("heart1");
+               moveHeart("heart2");
+               moveHeart("heart3");
+           }, 1000);
+       }
+
+       function moveHeart(heartId) {
+           let heart = document.getElementById(heartId);
+           heart.style.left = Math.random() * 300 + "px";
+           heart.style.top = Math.random() * 300 + "px";
+       }
+
+       function catchHeart(event) {
+           event.target.style.display = "none";
+           heartsCaught++;
+           if (heartsCaught === 3) {
+               setTimeout(() => {
+                   document.getElementById("messageContainer").style.display = "block";
+                   document.getElementById("surpriseButton").style.display = "block";
+                   document.getElementById("gameContainer").style.display = "none";
+               }, 500);
+           }
+       }
+
+       function revealAudio() {
+           document.getElementById("audioPlayer").style.display = "block";
+           document.getElementById("surpriseText").style.display = "block";
+       }
+
+       document.getElementById("heart1").addEventListener("click", catchHeart);
+       document.getElementById("heart2").addEventListener("click", catchHeart);
+       document.getElementById("heart3").addEventListener("click", catchHeart);
+</script>
+</body>
+</html>
